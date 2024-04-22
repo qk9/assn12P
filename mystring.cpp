@@ -105,7 +105,8 @@ namespace cs_mystring {
 
 
 	MyString MyString::operator+=(const MyString& right) {
-		// TODO: implement +=
+		*this = *this + right;
+		return *this;
 	}
 
 
@@ -114,7 +115,12 @@ namespace cs_mystring {
 
 
 	MyString operator+(const MyString& left, const MyString& right) {
-		// TODO: implement +
+		char* newstr = new char[left.length() + right.length() + 1];
+		strcpy(newstr, left.rawstr);
+		strcat(newstr, right.rawstr);
+		MyString returnstr(newstr);
+		delete[] newstr;
+		return returnstr;
 	}
 
 
